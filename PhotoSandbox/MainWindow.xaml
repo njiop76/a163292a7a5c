@@ -1,0 +1,13 @@
+﻿<Window x:Class="PhotoSandbox.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PhotoSandbox"
+        mc:Ignorable="d"
+        Title="PhotoSandbox" Height="500" Width="525">
+    <StackPanel>
+        <Image x:Name="imgImage" Stretch="Uniform"></Image>
+
+    </StackPanel>
+</Window>
