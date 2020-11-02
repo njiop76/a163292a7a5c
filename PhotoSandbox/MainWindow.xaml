@@ -3,11 +3,58 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PhotoSandbox"
+        xmlns:s="clr-namespace:PhotoSandbox"
         mc:Ignorable="d"
         Title="PhotoSandbox" Height="500" Width="525">
-    <StackPanel>
-        <Image x:Name="imgImage" Stretch="Uniform"></Image>
-
-    </StackPanel>
+    <DockPanel>
+        <DockPanel DockPanel.Dock="Top">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="File">
+                    <MenuItem Header="Open" Click="MenuOpenClick" />
+                    <MenuItem Header="Rotate Left"  Click="MenuRotateLeftClick" />
+                    <MenuItem Header="Rotate Right"  Click="MenuRotateRightClick" />
+                    <MenuItem Header="Save"  Click="MenuSaveClick" />
+                </MenuItem>
+            </Menu>
+        </DockPanel>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <Canvas x:Name="imgCanvas" Margin="10">
+                <Image x:Name="imgImage"></Image>
+                <Path Fill="Black" Opacity="0.5">
+                    <Path.Data>
+                        <CombinedGeometry GeometryCombineMode="Exclude">
+                            <CombinedGeometry.Geometry1>
+                                <RectangleGeometry x:Name="rectangleGeo1" />
+                            </CombinedGeometry.Geometry1>
+                            <CombinedGeometry.Geometry2>
+                                <RectangleGeometry x:Name="rectangleGeo2" />
+                            </CombinedGeometry.Geometry2>
+                        </CombinedGeometry>
+                    </Path.Data>
+                </Path>
+                <Grid  x:Name="cropTool"
+                        MinWidth="10"
+                        MinHeight="10"
+                        Canvas.Top="0"
+                        Canvas.Left="0">
+                    <Thumb DragDelta="ResizeThumb_DragDelta" Height="3" Cursor="SizeNS" Margin="0 -4 0 0"
+                       VerticalAlignment="Top" HorizontalAlignment="Stretch"/>
+                    <Thumb DragDelta="ResizeThumb_DragDelta" Width="3" Cursor="SizeWE" Margin="-4 0 0 0"
+                       VerticalAlignment="Stretch" HorizontalAlignment="Left"/>
+                    <Thumb DragDelta="ResizeThumb_DragDelta" Width="3" Cursor="SizeWE" Margin="0 0 -4 0"
+                       VerticalAlignment="Stretch" HorizontalAlignment="Right"/>
+                    <Thumb DragDelta="ResizeThumb_DragDelta" Height="3" Cursor="SizeNS" Margin="0 0 0 -4"
+                       VerticalAlignment="Bottom" HorizontalAlignment="Stretch"/>
+                    <Thumb DragDelta="ResizeThumb_DragDelta" Width="7" Height="7" Cursor="SizeNWSE" Margin="-6 -6 0 0"
+                       VerticalAlignment="Top" HorizontalAlignment="Left"/>
+                    <Thumb DragDelta="ResizeThumb_DragDelta" Width="7" Height="7" Cursor="SizeNESW" Margin="0 -6 -6 0"
+                       VerticalAlignment="Top" HorizontalAlignment="Right"/>
+                    <Thumb DragDelta="ResizeThumb_DragDelta" Width="7" Height="7" Cursor="SizeNESW" Margin="-6 0 0 -6"
+                       VerticalAlignment="Bottom" HorizontalAlignment="Left"/>
+                    <Thumb DragDelta="ResizeThumb_DragDelta" Width="7" Height="7" Cursor="SizeNWSE" Margin="0 0 -6 -6"
+                       VerticalAlignment="Bottom" HorizontalAlignment="Right"/>
+                </Grid>
+            </Canvas>
+        </ScrollViewer>
+    </DockPanel>
 </Window>
